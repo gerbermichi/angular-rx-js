@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {Subject} 'rxjs'
 
 @Component({
   selector: 'my-app',
@@ -7,16 +8,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AppComponent  {
-  name = "Angular";
-  color: string;
-  
-  getColor(): string {
-    console.log('getColor', this.color)
-    return this.color;
-  }
-
-  getName(): string {
-    console.log('getName', this.name)
-    return this.name;
+  private searchInput = new Subject<string>();
+  input(event:Event){
+    console.log(event) 
   }
 }
