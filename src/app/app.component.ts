@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
   }
 
 
-  input(event:Event){
+  input(event){
     this.searchInput.next(event.target.value);
   }
 }
