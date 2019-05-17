@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {Subject} 'rxjs'
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -7,9 +7,14 @@ import {Subject} 'rxjs'
   styleUrls: [ './app.component.css' ],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class AppComponent  {
+export class AppComponent implements OnInit{
   private searchInput = new Subject<string>();
+
+  ngOnInit(): void {
+    this.searchInput.subscribe(a => console.log(a))
+  }
+
   input(event:Event){
-    console.log(event) 
+    this.searchInput.next(event.target.value);
   }
 }
