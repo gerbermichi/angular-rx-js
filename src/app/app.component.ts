@@ -30,9 +30,8 @@ export class AppComponent implements OnInit{
           console.log("forkJoin", resA, resB)
       });
 
-
+      //mergeMap
       const fakeGet = timer(1000).pipe(mapTo({id: 1}));
-
       fakeGet.pipe(mergeMap(result => timer(1000).pipe(mapTo({foo: result.id + 1}))))
           .subscribe(res => console.log("mergeMap", res));
 
@@ -40,7 +39,8 @@ export class AppComponent implements OnInit{
       fromEvent(document, 'mousemove')
           .pipe(map((e: MouseEvent) => e.x))
           .pipe(pairwise())
-          .subscribe(pair => console.log(pair[1] - pair[0])); 
+          .pipe(map(pair => 255 - 2 * Math.abs(pair[0] - pair[1])))
+          .subscribe(value => document.body.style.backgroundColor = `rgb(${value}, ${value}, ${value})`);
   }
 
 
