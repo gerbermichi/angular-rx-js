@@ -5,7 +5,6 @@ import {debounceTime, map, mapTo, mergeMap, pairwise} from 'rxjs/operators';
 @Component({
   selector: 'my-app',
     template: `
-        <h1>Hello</h1>
         <input (input)="input($event)">
     `,
   changeDetection: ChangeDetectionStrategy.Default
